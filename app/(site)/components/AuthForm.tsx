@@ -6,6 +6,7 @@ import { useCallback, useState } from 'react';
 import { useForm, FieldValues, SubmitHandler } from 'react-hook-form';
 import AuthSocialButton from './AuthSocialButton';
 import { BsGithub, BsGoogle } from 'react-icons/bs';
+import axios from 'axios';
 
 type Props = {};
 
@@ -38,7 +39,7 @@ function AuthForm({}: Props) {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
     if (variant === 'REGISTER') {
-      // TODO: AXIOS REGISTER
+      axios.post('/api/register', data);
     }
 
     if (variant === 'LOGIN') {
