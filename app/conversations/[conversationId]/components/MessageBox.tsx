@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { format } from 'date-fns';
+import { BsCheckAll } from 'react-icons/bs';
 
 type Props = {
   isLast: boolean;
@@ -23,7 +24,7 @@ function MessageBox({ isLast, data }: Props) {
 
   const container = clsx('flex gap-3 p-4', isOwn && 'justify-end');
   const avatar = clsx(isOwn && 'order-2');
-  const body = clsx('flex flex-col gap-2', isOwn && 'items-end');
+  const body = clsx('flex flex-col gap-1', isOwn && 'items-end');
   const message = clsx(
     'text-sm w-fit overflow-hidden',
     isOwn ? 'bg-sky-500 text-white' : 'bg-gray-100',
@@ -53,8 +54,10 @@ function MessageBox({ isLast, data }: Props) {
             <div>{data.body}</div>
           )}
         </div>
-        {isLast && isOwn && seenList.length > 0 && (
-          <div className='text-xs font-light text-gray-500'>{`Seen by ${seenList}`}</div>
+        {isLast && isOwn && seenList.length > 0 ? (
+          <BsCheckAll size={18} className='text-sky-500' />
+        ) : (
+          isLast && <BsCheckAll size={18} className='text-gray-400' />
         )}
       </div>
     </div>
