@@ -137,8 +137,16 @@ function AuthForm({}: Props) {
             </div>
           </div>
           <div className='mt-6 flex gap-2'>
-            <AuthSocialButton icon={BsGithub} onClick={() => socialAction('github')} />
-            <AuthSocialButton icon={BsGoogle} onClick={() => socialAction('google')} />
+            <AuthSocialButton
+              disabled={isLoading}
+              icon={BsGithub}
+              onClick={() => socialAction('github')}
+            />
+            <AuthSocialButton
+              disabled={isLoading}
+              icon={BsGoogle}
+              onClick={() => socialAction('google')}
+            />
           </div>
         </div>
         <div className='flex gap-2 justify-center text-sm mt-6 px-2 text-gray-500'>

@@ -7,7 +7,6 @@ import useConversation from './useConversation';
 
 const useRoutes = () => {
   const pathname = usePathname();
-
   const { conversationId } = useConversation();
 
   const routes = useMemo(
@@ -28,7 +27,9 @@ const useRoutes = () => {
         label: 'Logout',
         href: '#',
         icon: HiArrowLeftOnRectangle,
-        onClick: () => signOut(),
+        onClick: () => {
+          signOut();
+        },
       },
     ],
     [conversationId, pathname]
