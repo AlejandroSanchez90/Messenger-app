@@ -57,7 +57,7 @@ function MessageBox({ isLast, data }: Props) {
         {isLast && isOwn && seenList.length > 0 ? (
           <BsCheckAll size={18} className='text-sky-500' />
         ) : (
-          isLast && <BsCheckAll size={18} className='text-gray-400' />
+          isLast && isOwn && <BsCheckAll size={18} className='text-gray-400' />
         )}
       </div>
     </div>
