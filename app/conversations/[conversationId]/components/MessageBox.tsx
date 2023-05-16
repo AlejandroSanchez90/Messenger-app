@@ -6,6 +6,8 @@ import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import { format } from 'date-fns';
 import { BsCheckAll } from 'react-icons/bs';
+import { useState } from 'react';
+import ImageModal from './ImageModal';
 
 type Props = {
   isLast: boolean;
@@ -14,6 +16,7 @@ type Props = {
 
 function MessageBox({ isLast, data }: Props) {
   const session = useSession();
+  const [imageModalOpen, setImageModalOpen] = useState(false);
 
   const isOwn = session?.data?.user?.email === data?.sender?.email;
 
@@ -42,8 +45,14 @@ function MessageBox({ isLast, data }: Props) {
           <div className='text-xs text-gray-400'>{format(new Date(data.createdAt), 'p')}</div>
         </div>
         <div className={message}>
+          <ImageModal
+            isOpen={imageModalOpen}
+            src={data.image}
+            onClose={() => setImageModalOpen(false)}
+          />
           {data.image ? (
             <Image
+              onClick={() => setImageModalOpen(true)}
               alt='Image'
               height={288}
               width={288}

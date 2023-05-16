@@ -29,7 +29,7 @@ function SettingsModal({ isOpen, onClose, currentUser }: Props) {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: currentUser.name,
+      name: currentUser?.name,
       image: currentUser?.image,
     },
   });
@@ -67,6 +67,27 @@ function SettingsModal({ isOpen, onClose, currentUser }: Props) {
             </h2>
             <p className='mt-1 text-sm leading-6 text-gray-600'>Edit your information</p>
             <div className='mt-10 flex flex-col gap-y-8'>
+              <div>
+                <label className='block text-sm font-medium leading-6 text-gray-900'>Photo</label>
+                <div className='mt-2 flex flex-col items-center gap-y-3'>
+                  <div className='relative inline-block rounded-full overflow-hidden h-40 w-40'>
+                    <Image
+                      alt='Avatar'
+                      src={image || currentUser?.image || '/images/placeholder.jpg'}
+                      fill
+                      className='object-cover'
+                    />
+                  </div>
+                  <CldUploadButton
+                    options={{ maxFiles: 1 }}
+                    onUpload={handleUpload}
+                    uploadPreset='lvrcm9ux'>
+                    <Button disabled={isLoading} type='button'>
+                      Change
+                    </Button>
+                  </CldUploadButton>
+                </div>
+              </div>
               <Input
                 disabled={isLoading}
                 label='Name'
@@ -75,26 +96,6 @@ function SettingsModal({ isOpen, onClose, currentUser }: Props) {
                 required
                 register={register}
               />
-              <div className=''>
-                <label className='block text-sm font-medium leading-6 text-gray-900'>Photo</label>
-                <div className='mt-2 flex items-center gap-x-3'>
-                  <Image
-                    alt='Profile picture'
-                    width='48'
-                    height='48'
-                    className='rounded-full'
-                    src={image || currentUser?.image || '/images/placeholder.jpg'}
-                  />
-                  <CldUploadButton
-                    options={{ maxFiles: 1 }}
-                    onUpload={handleUpload}
-                    uploadPreset='lvrcm9ux'>
-                    <Button disabled={isLoading} secondary type='button'>
-                      Change
-                    </Button>
-                  </CldUploadButton>
-                </div>
-              </div>
             </div>
           </div>
           <div className='mt-6 flex items-center justify-end gap-x-6'>

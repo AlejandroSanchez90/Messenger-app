@@ -16,6 +16,7 @@ function Body({ initialMessages }: Props) {
 
   useEffect(() => {
     axios.post(`/api/conversations/${conversationId}/seen`);
+    bottomRef?.current?.scrollIntoView();
   }, [conversationId]);
 
   return (

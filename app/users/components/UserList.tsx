@@ -19,12 +19,16 @@ function UserList({ items, currentUser }: Props) {
 
       <aside className='fixed inset-y-0 pb-20 lg:pb-0 lg:left-20 lg:w-80 lg:block overflow-y-auto border-r border-gray-200 block w-full left-0'>
         <div className='px-5'>
-          <div className='flex flex-row justify-between'>
+          <div className='flex flex-row justify-between items-center'>
             <div className='text-2xl font-bold text-neutral-800 py-4'>Contacts</div>
-            {/* TODO: Settings button for mobile */}
-            <button className='lg:hidden' onClick={() => setIsOpen(true)}>
+            <div
+              onClick={() => setIsOpen(true)}
+              className='rounded-full p-2 block lg:hidden  bg-gray-100 text-gray-600 cursor-pointer hover:opacity-75 transition'>
+              <BsGear size={20} />
+            </div>
+            {/* <button className='lg:hidden' onClick={() => setIsOpen(true)}>
               <BsGear className='text-sky-500 h-5 w-5' />
-            </button>
+            </button> */}
           </div>
           {items.map((item) => (
             <UserBox key={item.id} data={item} />

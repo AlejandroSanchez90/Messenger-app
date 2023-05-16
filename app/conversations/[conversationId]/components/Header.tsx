@@ -9,6 +9,7 @@ import { HiChevronLeft } from 'react-icons/hi';
 import { HiEllipsisHorizontal } from 'react-icons/hi2';
 import ProfileDrawer from './ProfileDrawer';
 import { set } from 'date-fns';
+import AvatarGroup from '@/app/components/AvatarGroup';
 type Props = {
   conversation: Conversation & {
     users: User[];
@@ -38,7 +39,11 @@ function Header({ conversation }: Props) {
             className='lg:hidden block text-sky-500 hover:text-sky-600 transition cursor-pointer'>
             <HiChevronLeft size={32} />
           </Link>
-          <Avatar user={otherUser} />
+          {conversation.isGroup ? (
+            <AvatarGroup users={conversation.users} />
+          ) : (
+            <Avatar user={otherUser} />
+          )}
           <div className='flex flex-col'>
             <div className=''>{conversation.name || otherUser.name}</div>
             <div className='text-sm font-light text-neutral-500'>{statusText}</div>
