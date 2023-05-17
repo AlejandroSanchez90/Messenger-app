@@ -43,6 +43,11 @@ function MessageBox({ isLast, data }: Props) {
         <div className='flex items-center gap-1'>
           <div className='text-sm text-gray-500'>{data.sender.name}</div>
           <div className='text-xs text-gray-400'>{format(new Date(data.createdAt), 'p')}</div>
+          {isLast && isOwn && seenList.length > 0 ? (
+            <BsCheckAll size={18} className='text-sky-500' />
+          ) : (
+            isLast && isOwn && <BsCheckAll size={18} className='text-gray-400' />
+          )}
         </div>
         <div className={message}>
           <ImageModal
@@ -63,11 +68,6 @@ function MessageBox({ isLast, data }: Props) {
             <div>{data.body}</div>
           )}
         </div>
-        {isLast && isOwn && seenList.length > 0 ? (
-          <BsCheckAll size={18} className='text-sky-500' />
-        ) : (
-          isLast && isOwn && <BsCheckAll size={18} className='text-gray-400' />
-        )}
       </div>
     </div>
   );

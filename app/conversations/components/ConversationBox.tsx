@@ -27,6 +27,7 @@ function ConversationBox({ data, selected }: Props) {
 
   const lastMessage = useMemo(() => {
     const messages = data.messages || [];
+
     return messages[messages.length - 1];
   }, [data.messages]);
 

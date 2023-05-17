@@ -10,6 +10,7 @@ import { HiEllipsisHorizontal } from 'react-icons/hi2';
 import ProfileDrawer from './ProfileDrawer';
 import { set } from 'date-fns';
 import AvatarGroup from '@/app/components/AvatarGroup';
+import useActiveList from '@/app/hooks/useActiveList';
 type Props = {
   conversation: Conversation & {
     users: User[];
@@ -21,13 +22,20 @@ function Header({ conversation }: Props) {
 
   const [drawerOpen, setDrawerOpen] = useState(false);
 
+  const { members } = useActiveList();
+  const isActive = members.indexOf(otherUser?.email!) !== -1;
+
   const statusText = useMemo(() => {
     if (conversation.isGroup) {
       return `${conversation.users.length} members`;
     }
 
-    return 'Active';
-  }, [conversation]);
+    if (isActive) {
+      return 'Online';
+    }
+
+    return 'Offline';
+  }, [conversation.isGroup, conversation.users.length, isActive]);
 
   return (
     <>
