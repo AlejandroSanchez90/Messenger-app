@@ -34,7 +34,7 @@ export async function POST(request: Request) {
       },
     });
 
-    const updatedConversation = await prisma.conversation.update({
+    const updatedConversation = await prismadb.conversation.update({
       where: {
         id: conversationId,
       },
@@ -69,6 +69,6 @@ export async function POST(request: Request) {
     return NextResponse.json(newMessage);
   } catch (error: any) {
     console.log(error, 'ERROR_MESSAGE');
-    return new NextResponse('Internal Error', { status: 500 });
+    return new NextResponse(error, { status: 500 });
   }
 }
