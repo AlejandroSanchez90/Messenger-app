@@ -12,8 +12,8 @@ type Props = {
 function ImageModal({ isOpen, onClose, src }: Props) {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div className='w-96 h-96'>
-        <Image alt='Image' className='object-cover' fill src={src!} />
+      <div className='w-full h-full'>
+        <Image alt='Image' className='' height={500} width={500} src={src!} />
       </div>
     </Modal>
   );
