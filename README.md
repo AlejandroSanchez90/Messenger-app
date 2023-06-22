@@ -2,6 +2,11 @@
 
 This project is a Messenger web app clone that aims to provide users with a real-time messaging experience similar to popular messaging platforms. The app incorporates a range of features and integrations to enhance communication, user authentication, and overall usability.
 
+## Demo
+
+You can explore a live demo of the Messenger web app clone by visiting the following link: [Messenger Web App Demo](https://project-5-nu.vercel.app/)
+Feel free to interact with the demo and test out the available features.
+
 ## Features
 
 1. **Real-time Messaging using Pusher**: The app leverages the Pusher service to enable instant message delivery and updates, ensuring that users can engage in seamless conversations with minimal delay.
@@ -35,8 +40,3 @@ This project is a Messenger web app clone that aims to provide users with a real
 - **Real-time Messaging**: Pusher
 - **Authentication**: NextAuth
 - **File and Image Upload**: Cloudinary CDN
-  
-## Demo
-
-You can explore a live demo of the Messenger web app clone by visiting the following link: [Messenger Web App Demo](https://project-5-nu.vercel.app/)
-Feel free to interact with the demo and test out the available features.
