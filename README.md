@@ -35,8 +35,8 @@ Feel free to interact with the demo and test out the available features.
 
 ## Technologies Used
 
-- **Front-end**: React, Next.js, Tailwind
-- **Back-end**: Node.js, Express.js
+- **Front-end**: Typescript, React, Next.js, Tailwind
+- **Back-end**: Node.js
 - **Real-time Messaging**: Pusher
 - **Authentication**: NextAuth
 - **File and Image Upload**: Cloudinary CDN
